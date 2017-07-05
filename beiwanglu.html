@@ -18,13 +18,15 @@
     <script src="beiwanglu.js"></script>
     <style>
         html,body{
-            width:100%;height:100%;
+            width:100%;
+            height:100%;
         }
         .container-fluid, .container-fluid .row{
             height:100%;
         }
         .container-fluid .left,.container-fluid .right{
-            height:100%;position: relative;
+            height:100%;
+            position: relative;
         }
         .container-fluid .left{
             background: pink;
@@ -51,10 +53,15 @@
             position: absolute;
             bottom: 10px;
             cursor: pointer;
+            width:80%;
+            text-align: center;
+            height:40px;
+            line-height: 40px;
         }
         .header{
             height:50px;
-            border-bottom: 1px solid #000;display: flex;
+            border-bottom: 1px solid #000;
+            display: flex;
             justify-content: space-between;
         }
         .header .addcon{
@@ -99,35 +106,26 @@
                     </div>
                 </div>
             </form>
-
             <!--已记录-->
-
             <div class="done">
                 已记录
+                共记录<span ng-model="rows">{{rows}}</span>条
             </div>
 
             <!--计划列表-->
 
             <div class="list" ng-repeat="item in data track by item.id">
                 <input type="text" ng-model="item.name" ng-click="index($index)">
+                <!--<span>{{item.time}}</span>-->
                 <button class="button" type="submit" ng-click="del(item.id)">删除</button>
             </div>
-
-
             <!--添加按钮-->
-
-
             <div class="add" ng-click="add()">
-                <span class="">+</span> 添加计划
+                添加计划
             </div>
-
-
-
-
-
         </div>
         <div class="col-xs-8 col-sm-9 right">
-            <!--右边的头部-->
+            <!--右头-->
             <div class="header" ng-repeat="item in data track by item.id" ng-show="now==$index">
                 <h3>
                     {{item.name}}
@@ -136,9 +134,7 @@
 
                     </span>
             </div>
-
-            <!--右边的内容-->
-
+            <!--右部分-->
             <div class="listcon">
                 <div class="select">
 
@@ -150,7 +146,5 @@
         </div>
     </div>
 </div>
-</body>
-</html>
 </body>
 </html>

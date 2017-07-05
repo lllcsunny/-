@@ -10,10 +10,17 @@ angular.module("myapp",[])
             var obj={};
             obj.id=maxid();
             obj.name="新建备忘录";
+            // obj.time=$scope.time;
             obj.son=[];
             $scope.data.push(obj);
+            $scope.rows=$scope.data.length;
             localStorage.message=JSON.stringify($scope.data);
         }
+        //获取当前时间
+        // let time=new Date();
+        // $scope.time = $filter('date')(time, 'yyyy-MM-dd');
+        // 获取存储的条数
+        $scope.rows=$scope.data.length;
         //存取当前下标
         $scope.index=0;
         $scope.index=function(index){
@@ -24,6 +31,8 @@ angular.module("myapp",[])
             angular.forEach($scope.data,function (val, key) {
                 if($scope.data[key].id==id){
                     $scope.data.splice(key,1);
+                    $scope.rows=$scope.data.length;
+                    localStorage.message=JSON.stringify($scope.data);
                 }
             })
         }
